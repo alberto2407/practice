@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@400..700&family=Domine:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="images/favicon.png" type="image/x-icon">
+</head>
+
+<body onclick="PlayAudio()">
+    <header>
+        <h1>¡Feliz día de San Valentín!</h1>
+        <img class="heart" src="images/corazon.png" alt="Corazon">
+    </header>
+    <main>
+        <section>
+            <audio class="audio"  autoplay loop src="audio/CANO - Se Pone Las Nike.mp3"></audio>
+        </section>
+        <section class="message">
+            <p>¡Hola Carmen!<br> A la verdad que espero y deseo que estes bien. Al momento en el que estes leyendo esto
+                quizás estaras de regreso a tu casa y
+                tambien espero que puedas descansar.<br>
+                Queria dedicarte algo y es lo siguiente: que realmente eres una chica industriosa, una chica que da todo
+                de si, trabajas duramente
+                a diferencia de otros que la verdad contigo no se pueden comparar. Trabajas por lo tuyo y tambien tienes
+                buenos sentimientos de
+                los cuales he visto por medio del cuidado que le das a tu perrito, cuando me cuentas que tienes que
+                sacarlo a pasear, aun estando cansada
+                y con sueño. Recuerdo la ocasion en la que le pasaba algo y querias llevarlo al veterinario pero al
+                final fue
+                tu padre quien lo llevo. Me contaste que llorabas por como se encontraba pero al día de hoy se que esta
+                bien
+                según me has contado, por lo cual me alegero de verdad.<br>
+                Fue en esto que vi que tienes unos sentimientos maravillosos. Eres admirable, realmente se que lo eres,
+                las cosas pequeñas hacen las cosas grandes.<br>
+                Personalmente, y espero no incomodarte con lo siguiente, ciertamente me agrada tu presencia, aun que ya
+                te lo mencione en anteriores
+                ocasiones. Si me permites, solo por hoy, quiero decirte que eres una chica preciosa, una chica que me
+                inspira, una chica que me hace sentir
+                bien. <br>
+                Me encanta escucharte y hablar contigo. Perdoname si no hablo mucho, la verdad me quedo sin palabras y
+                no se que podria contar pero si tu me hablas, te aseguro que te dare de mi atención. Es algo que queria
+                decirte y con más que decir concluyo mis dedicaciones, pues no quiero robarte mucho tiempo pero si
+                quisiera preguntarte sobre si... </p>
+        </section>
+        <section class="container">
+            <h2>¿Podria invitarte a salir?</h2>
+            <div class="options">
+                <a class="option-1" href="https://w.app/zblpbh" target="_blank">Si, esta bien</a>
+                <a class="option-2"
+                    href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6zgYrQaQXZcsN55bHPC5fnvp2ITsDl6-vYQ&s"
+                    target="_blank">No, gracias</a>
+            </div>
+            <p class="choose">Puedes darle a una opción</p>
+        </section>
+
+    </main>
+    <footer>
+        <p>Alberto F. Conejo - 2025</p>
+    </footer>
+    <script>
+        PlayAudio = () => {
+            const audio = document.querySelector('audio');
+            audio.play();
+        };
+    </script>
+</body>
+
+</html>

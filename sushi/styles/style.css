@@ -1,0 +1,84 @@
+body {
+    background-color: black;
+}
+
+h1 {
+    text-align: center;
+    color: #FF0303;
+    font-size: 50px;
+    font-family: dancing script;
+}
+
+header p {
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    font-family: dancing script;
+}
+.heart {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+main {
+    margin: 10px;
+    padding: 10px;
+}
+
+.message {
+    margin: 10px 30px ;
+    padding: 5px 15px;
+    text-align: center;
+    color: white;
+    font-family: dancing script;
+}
+.choose {
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    font-family: dancing script;
+}
+
+a {
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    font-family: dancing script;
+    text-decoration: none;
+    
+}
+
+a:hover {
+    color: white;
+    text-decoration: underline 2px solid white;
+    transition: all 6ms ease-in-out;
+}
+.container {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: #FF0303;
+    font-family: dancing script;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+}
+p {
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: dancing script;
+}
+
+footer {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
