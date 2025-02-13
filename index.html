@@ -15,7 +15,7 @@
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
 </head>
 
-<body onclick="PlayAudio()">
+<body >
     <header>
         <h1>¡Feliz día de San Valentín!</h1>
         <img class="heart" src="images/corazon.png" alt="Corazon">
@@ -23,6 +23,7 @@
     <main>
         <section>
             <audio class="audio"  autoplay loop src="audio/CANO - Se Pone Las Nike.mp3"></audio>
+            <audio class="another-audio"  autoplay loop src="audio/No.mp3"></audio>
         </section>
         <section class="message">
             <p>¡Hola Carmen!<br> A la verdad que espero y deseo que estes bien. Al momento en el que estes leyendo esto
@@ -54,8 +55,8 @@
         <section class="container">
             <h2>¿Podria invitarte a salir?</h2>
             <div class="options">
-                <a class="option-1" href="https://w.app/zblpbh" target="_blank">Si, esta bien</a>
-                <a class="option-2"
+                <a class="option-1" onclick="PlayAudioOne()" href="https://w.app/zblpbh" target="_blank">Si, esta bien</a>
+                <a class="option-2" onclick="AnotherPlayAudio()"
                     href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6zgYrQaQXZcsN55bHPC5fnvp2ITsDl6-vYQ&s"
                     target="_blank">No, gracias</a>
             </div>
@@ -67,9 +68,18 @@
         <p>Alberto F. Conejo - 2025</p>
     </footer>
     <script>
-        PlayAudio = () => {
+        PlayAudioOne = () => {
             const audio = document.querySelector('audio');
             audio.play();
+        };
+        AnotherPlayAudio = () => {
+            const audio = document.querySelector('.another-audio');
+            audio.play();
+        };
+
+        PlayAudioTwo = () => {
+            const audio = document.querySelector('audio');
+            audio.pause();
         };
     </script>
 </body>
