@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(#f8e1f4, #ffe8e0);
+    color: #333;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+    color: #b30059;
+  }
+
+  .rose {
+    width: 100px;
+    height: 100px;
+    margin: 30px auto;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  .story {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #fff8f4;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .final-message {
+    margin-top: 40px;
+    font-size: 1.3em;
+    font-style: italic;
+    color: #444;
+  }
