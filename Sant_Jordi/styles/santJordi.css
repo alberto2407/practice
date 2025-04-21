@@ -25,13 +25,21 @@ body {
     50% { transform: translateY(-15px); }
   }
 
+  #story-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-content: center;
+  }
+
   .story {
-    max-width: 800px;
-    margin: 30px auto;
     background: #fff8f4;
     border-radius: 20px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    align-content: center;
+    margin: 0 auto;
   }
 
   .final-message {
