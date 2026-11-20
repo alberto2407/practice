@@ -1,0 +1,521 @@
+$pink-bg: #f7b2b7;
+$cake-white: #fcfcfc;
+$icing-blue: #6ec6ff;
+$flame-color: #ffb347;
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    font-family: 'Georgia', serif;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* --- SISTEMA DE PANTALLAS --- */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* --- PANTALLA 1: INTRO --- */
+#screen-1 {
+    background-color: #0a0a0a;
+}
+
+.intro-container {
+    max-width: 600px;
+    text-align: center;
+    padding: 2rem;
+}
+
+.typewriter {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+    min-height: 120px;
+    white-space: pre-wrap;
+}
+
+.hidden-btn {
+    opacity: 0;
+    pointer-events: none;
+    margin-top: 2rem;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+
+    &.show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &:hover {
+        background-color: #fff;
+        color: #000;
+    }
+}
+
+/* --- PANTALLA 2: PASTEL Y TEXTO --- */
+#screen-2 {
+    background-color: #0a0a0a;
+}
+
+/* La luz */
+.light-glow {
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 179, 71, 0.6) 0%, rgba(255, 179, 71, 0) 70%);
+    border-radius: 50%;
+    transition: bottom 2s ease-out, opacity 2s;
+    opacity: 0;
+
+    &.active {
+        bottom: 45%;
+        /* <-- Cambia esto. Antes era 30% */
+        opacity: 1;
+    }
+}
+
+.surprise-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- EL PASTEL DE 3 PISOS --- */
+.cake-wrapper {
+    opacity: 0;
+    transform: scale(0.3) translateY(100px);
+    transition: all 2s cubic-bezier(0.25, 1, 0.5, 1);
+    margin-bottom: 30px;
+    /* Un poco de espacio extra con el texto */
+
+    &.active {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.cake {
+    position: relative;
+    width: 320px;
+    height: 280px;
+    /* Ya no usamos flex aquí, las posicionaremos con absolute */
+}
+
+/* Clase base para todos los pisos */
+.layer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* Aseguramos que el contenido interno no se salga */
+    overflow: hidden;
+}
+
+/* El goteo de chocolate (reutilizable) */
+.chocolate-drip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    /* Un poco más bajo para que se vea mejor */
+    background-color: #4a2511;
+    border-radius: 15px 15px 0 0;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 40%,
+            95% 100%, 90% 40%, 85% 90%, 80% 40%,
+            75% 100%, 70% 40%, 65% 80%, 60% 40%,
+            55% 100%, 50% 40%, 45% 90%, 40% 40%,
+            35% 100%, 30% 40%, 25% 80%, 20% 40%,
+            15% 100%, 10% 40%, 5% 90%, 0% 40%);
+    z-index: 2;
+}
+
+/* --- Piso Inferior (Naranja) --- */
+.bottom-layer {
+    bottom: 20px;
+    /* Posición desde abajo */
+    width: 280px;
+    height: 85px;
+    background-color: #f39c12;
+    z-index: 1;
+
+    background-image:
+        radial-gradient(circle, #fff 3px, transparent 4px),
+        radial-gradient(circle, #fff 2px, transparent 3px);
+    background-size: 40px 40px, 30px 30px;
+    background-position: 10px 30px, 25px 55px;
+}
+
+/* --- Piso Medio (Verde) --- */
+.middle-layer {
+    bottom: 100px;
+    /* 20px (abajo) + 85px (altura inferior) - 5px de superposición */
+    width: 210px;
+    height: 70px;
+    background-color: #2ecc71;
+    z-index: 2;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f1c40f'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
+    background-size: 20px 20px;
+    background-position: 20px 40px;
+    background-repeat: repeat-x;
+}
+
+/* --- Piso Superior (Rosa) --- */
+.top-layer {
+    bottom: 165px;
+    /* 100px + 70px - 5px */
+    width: 140px;
+    height: 60px;
+    background-color: #e84393;
+    z-index: 3;
+}
+
+/* --- El Plato --- */
+.plate {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 340px;
+    height: 20px;
+    background-color: #bdc3c7;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* --- Las Velas --- */
+.candles {
+    position: absolute;
+    bottom: 215px;
+    /* Se posicionan justo encima del piso rosa (165px de alto + 60px del piso = 225px) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    z-index: 10;
+    /* Z-index alto para asegurar que estén al frente */
+}
+
+.candle {
+    width: 10px;
+    height: 40px;
+    background: repeating-linear-gradient(45deg, #fff, #fff 4px, #e74c3c 4px, #e74c3c 8px);
+    border-radius: 3px;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 6px;
+        background-color: #333;
+    }
+}
+
+.flame {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 22px;
+    background: radial-gradient(ellipse at bottom, #fff 0%, #ffb347 40%, #ff4500 100%);
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px rgba(255, 179, 71, 0.8);
+    animation: flicker 0.6s infinite alternate;
+    z-index: 5;
+}
+
+@keyframes flicker {
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* --- TEXTO FINAL --- */
+.birthday-text {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1.5s ease;
+    margin-top: 30px;
+
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: $pink-bg;
+}
+
+.name {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.message {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #e0e0e0;
+}
+
+#confetti-btn {
+    background-color: $pink-bg;
+    color: #000;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+/* --- Ocultar el reproductor de audio --- */
+#bg-music {
+    display: none;
+}
+
+/* --- PANTALLA 3: EL SOBRE MÁGICO --- */
+.envelope-container {
+    text-align: center;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1.5s ease;
+    max-width: 600px;
+
+    &.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.envelope-title {
+    color: $pink-bg;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+/* El sobre cerrado (Botón clickeable) */
+.envelope-closed {
+    background-color: #fdf5e6;
+    width: 250px;
+    height: 160px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+
+    &:hover {
+        transform: translateY(-5px) scale(1.05);
+    }
+
+    .wax-seal {
+        font-size: 3rem;
+        margin-bottom: 10px;
+        animation: pulse 2s infinite;
+    }
+
+    p {
+        color: #7a4a4a;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin: 0;
+    }
+}
+
+/* Animación para el sello */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* La carta abierta (inicialmente oculta) */
+.letter-content {
+    display: none;
+    background-color: #fff;
+    color: #333;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    border-left: 10px solid $pink-bg;
+    animation: slideUp 1s ease forwards;
+
+    /* --- NUEVOS ESTILOS PARA EL SCROLL --- */
+    max-height: 60vh;
+    /* Ocupa máximo el 60% de la pantalla */
+    overflow-y: auto;
+    /* Permite hacer scroll solo aquí adentro */
+    width: 90%;
+    /* Para que no se pegue a los bordes en celular */
+    margin: 0 auto;
+    /* Lo centra */
+    /* ------------------------------------- */
+
+    h2 {
+        color: $pink-bg;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 1rem;
+    }
+
+    .signature {
+        font-family: 'Brush Script MT', cursive;
+        font-size: 1.8rem;
+        color: #333;
+        text-align: right;
+        margin-top: 30px;
+    }
+}
+
+/* Animación de la carta al aparecer */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Personalizar la barra de scroll de la carta */
+.letter-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.letter-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.letter-content::-webkit-scrollbar-thumb {
+    background: $pink-bg;
+    border-radius: 10px;
+}
+
+.letter-content::-webkit-scrollbar-thumb:hover {
+    background: #e84393;
+}
+
+/* --- DISEÑO RESPONSIVO PARA CELULARES --- */
+@media (max-width: 600px) {
+
+    /* 1. Reducimos un poco el tamaño general del pastel */
+    .cake-wrapper {
+        transform: scale(0.85) translateY(100px);
+        /* Un poco más chico */
+
+        &.active {
+            transform: scale(0.85) translateY(0);
+        }
+    }
+
+    /* 2. Ajustamos los textos */
+    h1 {
+        font-size: 2rem;
+        /* Letra más pequeña */
+    }
+
+    .name {
+        font-size: 1.1rem;
+    }
+
+    .message {
+        font-size: 1rem;
+        padding: 0 15px;
+        /* Un poco de margen a los lados para que no toque los bordes */
+    }
+
+    /* 3. Ajustamos el texto de la introducción (Pantalla 1) */
+    .typewriter {
+        font-size: 1.4rem;
+        /* Letra más chica para que quepa bien */
+        padding: 0 15px;
+    }
+
+    /* 4. Ajustamos la luz para que no se vea gigante */
+    .light-glow {
+        width: 300px;
+        height: 300px;
+    }
+}

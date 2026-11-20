@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Feliz Cumpleaños Jhoanna!</title>
+  <link rel="stylesheet" href="/css/style.scss" />
+</head>
+<body>
+
+  <!-- La música -->
+  <audio id="bg-music" loop>
+    <source src="/birthday_song.m4a" type="audio/mp4">
+    Tu navegador no soporta la reproducción de audio.
+  </audio>
+
+  <!-- PANTALLA 1: La introducción -->
+  <section class="screen active" id="screen-1">
+    <div class="intro-container">
+      <h1 id="intro-text" class="typewriter"></h1>
+      <button id="btn-next" class="hidden-btn">Siguiente ➔</button>
+    </div>
+  </section>
+
+  <!-- PANTALLA 2: El pastel y la sorpresa -->
+  <section class="screen" id="screen-2">
+    <!-- El resplandor de luz que aparece primero -->
+    <div class="light-glow" id="light-glow"></div>
+
+    <!-- Contenedor principal de la sorpresa -->
+    <div class="surprise-container">
+      
+      <!-- EL PASTEL DE 3 PISOS -->
+      <div class="cake-wrapper" id="cake-wrapper">
+        <div class="cake">
+          <div class="plate"></div>
+          
+          <!-- Piso Inferior -->
+          <div class="layer bottom-layer">
+            <div class="chocolate-drip"></div>
+          </div>
+          
+          <!-- Piso Medio -->
+          <div class="layer middle-layer">
+            <div class="chocolate-drip"></div>
+          </div>
+          
+          <!-- Piso Superior -->
+          <div class="layer top-layer">
+            <div class="chocolate-drip"></div>
+          </div>
+
+          <!-- Velas (Ahora están por fuera del piso para que no se corten) -->
+          <div class="candles">
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+            <div class="candle"><div class="flame"></div></div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- LA TARJETA DE TEXTO (Aparece al final) -->
+      <div class="birthday-text" id="birthday-text">
+        <h1>¡Feliz Cumpleaños Jhoanna!</h1>
+        <p class="name">Disfruta 🎉</p>
+        <p class="message">🫂 Que tengas un día increíble. ¡Eres la mejor! 💐</p>
+        <button id="confetti-btn">¡Sorpresa!</button>
+         <!-- ¡NUEVO BOTÓN! Este es el que conecta con la pantalla del sobre -->
+        <button id="btn-to-memories" class="hidden-btn mt-2" style="display: none;">Ir a la carta 💌</button>
+      </div>
+
+    </div>
+  </section>
+
+    <!-- PANTALLA 3: El Sobre Mágico -->
+  <section class="screen" id="screen-3">
+    <div class="envelope-container" id="envelope-container">
+      <h2 class="envelope-title">Tengo algo más que decirte...</h2>
+      
+      <!-- El sobre cerrado -->
+      <div class="envelope-closed" id="envelope-closed">
+        <div class="wax-seal">💌</div>
+        <p>Haz clic para abrir</p>
+      </div>
+
+      <!-- La carta (oculta al principio) -->
+      <div class="letter-content" id="letter-content">
+        <h2>Jhoanna</h2>
+        <p>¡Feliz cumpleaños, Jhoanna! Es una verdadera alegría poder celebrar otro año más de tu vida.</p>
+        <p>Que nunca te falten las risas, los buenos consejos, las charlas interminables y las anécdotas para contar cuando lleguemos a ser viejos.</p>
+        <p>Gracias por ser como una gran amiga y por demostrar siempre el significado de la amistad.</p>
+        <p>Deseo que este nuevo año te traiga miles de oportunidades, viajes, éxitos y momentos inolvidables. Dios te bendiga hoy Jhoanna</p>
+        <p>¡Un abrazo enorme y disfruta de tu día!</p>
+
+        <p class="signature">Con cariño, Alberto</p>
+      </div>
+      
+      <!-- Botón para reiniciar (oculto hasta que se abra la carta) -->
+      <button id="btn-restart" class="hidden-btn mt-2">Volver a empezar ↺</button>
+    </div>
+  </section>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
